@@ -13,6 +13,7 @@ const port = 3000;
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "/index.html"));
 });
+
 //route handler for GET request from weather API with async await
 app.get("/weather", async (req, res) => {
   console.log("request has hit");
