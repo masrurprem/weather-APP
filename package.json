@@ -3,14 +3,16 @@
   "version": "1.0.0",
   "description": "app to get weather info in city",
   "main": "index.js",
-  "type": "commonjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "author": "masrur alam",
   "license": "ISC",
   "dependencies": {
-    "node-fetch": "^3.3.2"
+    "express": "^5.1.0",
+    "node-fetch": "^3.3.2",
+    "nodemon": "^3.1.10"
   }
 }

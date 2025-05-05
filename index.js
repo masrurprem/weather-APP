@@ -9,12 +9,10 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const port = 3000;
-
 // render html homepage with default static setting
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "/index.html"));
 });
-
 //route handler for GET request from weather API with async await
 app.get("/weather", async (req, res) => {
   console.log("request has hit");
@@ -35,7 +33,7 @@ app.get("/weather", async (req, res) => {
     console.log(weather); // actual weather data as js object parded from JSON
     //console.log(typeof weather);
     //res.send(weather.name);
-    res.send(weather.main.temp);
+    return res.send(weather.main.temp);
   } catch (er) {
     console.log(er);
   }
