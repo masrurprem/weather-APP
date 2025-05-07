@@ -16,10 +16,10 @@ form.addEventListener("submit", async (e) => {
   );
   const weatherData = await response.json();
   if (weatherData.status === 404) {
-    displayWeather.textContent = weatherData.payload.message;
+    displayWeather.textContent = weatherData?.payload.message;
     dispCity.textContent = `Please recheck your country name: ${get_city}`;
   } else if (weatherData.status === 200) {
-    displayWeather.textContent = `tempurature is: ${weatherData.payload.main.temp}°C`;
-    dispCity.textContent = `city name: ${weatherData.payload.name}`;
+    displayWeather.textContent = `tempurature is: ${weatherData?.payload.main.temp}°C`;
+    dispCity.textContent = `city name: ${weatherData?.payload.name}`;
   }
 });

@@ -25,12 +25,12 @@ app.get("/weather", async (req, res) => {
 
   const response = await fetch(apiUrl);
   if (!response.ok) {
-    res.json({
+    return res.json({
       status: +response.status,
       payload: await response.json(),
     });
   }
-  res.json({
+  return res.json({
     status: +response.status,
     payload: await response.json(),
   });
