@@ -15,6 +15,7 @@ form.addEventListener("submit", async (e) => {
     `http://localhost:3000/weather?city=${get_city}`
   );
   const weatherData = await response.json();
+  console.log(weatherData);
   if (weatherData.status === 404) {
     displayWeather.textContent = weatherData?.payload.message;
     dispCity.textContent = `Please recheck your country name: ${get_city}`;
