@@ -19,7 +19,7 @@ app.get("/weather", async (req, res) => {
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city_name}&appid=${apiKey}&units=metric`;
 
   const response = await fetch(apiUrl);
-  console.log(response);
+  //console.log(response);
 
   if (!response.ok) {
     return res.json({
@@ -28,13 +28,14 @@ app.get("/weather", async (req, res) => {
     });
   }
   const data = await response.json();
-  //console.log(data);
+  console.log(data);
   return res.json({
     status: response.status,
     temp: data.main.temp,
     city: data.name,
     humidity: data.main.humidity,
     windSpeed: data.wind.speed,
+    //weathIcon: data.weather[0].main,
   });
 });
 
@@ -44,5 +45,5 @@ app.listen(port, (error) => {
     console.log("error connecting server");
     process.exit(1);
   }
-  console.log("server connected at port-3000");
+  console.log(`server connected at http://localhost:${port}`);
 });
