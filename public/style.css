@@ -25,7 +25,7 @@
   /* background-color: rgb(54, 91, 91); */
   background: linear-gradient(
     to bottom,
-    #6f8cc1,
+    #566b92,
     #8f9cc0,
     #b4aac4,
     #c9aa89,
@@ -46,8 +46,8 @@
 }
 
 .weatherWindow--1 > img {
-  width: 55px;
-  height: 55px;
+  width: 70px;
+  height: 70px;
 }
 .humidity {
   display: flex;
@@ -124,7 +124,20 @@
   justify-content: space-between;
   align-items: center;
 }
-
+.landing--txt {
+  text-align: center;
+  flex-direction: column;
+  margin-top: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.landing--txt > h3 {
+  margin-top: 20px;
+}
+.landing--txt > .landing--msg--1 {
+  margin-top: 40px;
+}
 .location--error > img {
   width: 250px;
   height: 250px;

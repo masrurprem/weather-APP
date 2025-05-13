@@ -35,7 +35,7 @@ app.get("/weather", async (req, res) => {
     city: data.name,
     humidity: data.main.humidity,
     windSpeed: data.wind.speed,
-    //weathIcon: data.weather[0].main,
+    weathIcon: data.weather[0].main,
   });
 });
 

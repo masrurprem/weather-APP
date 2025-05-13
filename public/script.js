@@ -15,10 +15,11 @@ const wind = document.querySelector(".wind--value");
 const totWeather = document.querySelector(".weather-app");
 const weatherDisp1 = document.querySelector(".weatherWindow--1");
 const weatherDisp2 = document.querySelector(".weatherWindow--2");
-const weatherIcon = document.querySelector(".weather_image");
+const weatherIcon = document.querySelector("#weather_image");
 const locationNotfound = document.querySelector(".location--error");
 const overlay = document.querySelector(".overlay");
 const spinner = document.querySelector(".spinner");
+const landing = document.querySelector(".landing--txt");
 
 // overlay handlers
 function overlayOn() {
@@ -51,16 +52,18 @@ submitForm.addEventListener("submit", async (e) => {
   //console.log("the response obj to client: ", response);
 
   const weatherData = await response.json();
-  //console.log("data to client side: ", weatherData);
+  console.log("data to client side: ", weatherData);
 
   overlayOff();
   hideSpinner();
 
   if (weatherData.status === 404) {
+    landing.classList.add("hidden");
     weatherDisp1.classList.add("hidden");
     weatherDisp2.classList.add("hidden");
     locationNotfound.classList.remove("hidden");
   } else if (weatherData.status === 200) {
+    landing.classList.add("hidden");
     locationNotfound.classList.add("hidden");
     weatherDisp1.classList.remove("hidden");
     weatherDisp2.classList.remove("hidden");
@@ -70,6 +73,20 @@ submitForm.addEventListener("submit", async (e) => {
     city.textContent = `${weatherData.city}`;
     hum.textContent = `${weatherData.humidity}%`;
     wind.textContent = `${weatherData.windSpeed} Km/h`;
+
     // Update weather icon
+    const weather = weatherData.weathIcon;
+
+    if (weather === "Clear") {
+      weatherIcon.src = "/images/sun.png";
+    } else if (weather === "Clouds") {
+      weatherIcon.src = "/images/cloud.png";
+    } else if (weather === "Rain") {
+      weatherIcon.src = "/images/rain.png";
+    } else if (weather === "Drizzle") {
+      weatherIcon.src = "/images/drizzle.png";
+    } else if (weather === "Thunderstorm") {
+      weatherIcon.src = "/images/thunderStorm.png";
+    }
   }
 });
