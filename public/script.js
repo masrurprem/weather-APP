@@ -17,10 +17,31 @@ const weatherDisp1 = document.querySelector(".weatherWindow--1");
 const weatherDisp2 = document.querySelector(".weatherWindow--2");
 const weatherIcon = document.querySelector(".weather_image");
 const locationNotfound = document.querySelector(".location--error");
+const overlay = document.querySelector(".overlay");
+const spinner = document.querySelector(".spinner");
 
-// Event Handing
+// overlay handlers
+function overlayOn() {
+  overlay.classList.remove("hidden");
+}
+
+function overlayOff() {
+  overlay.classList.add("hidden");
+}
+// loading spinner handlers
+function showSpinner() {
+  spinner.classList.remove("hidden");
+}
+
+function hideSpinner() {
+  spinner.classList.add("hidden");
+}
+
+// Weather Data Request: Event Handling
 submitForm.addEventListener("submit", async (e) => {
   e.preventDefault();
+  showSpinner();
+  overlayOn();
   const requested_city = inputCity.value;
   console.log(requested_city);
 
@@ -31,6 +52,9 @@ submitForm.addEventListener("submit", async (e) => {
 
   const weatherData = await response.json();
   //console.log("data to client side: ", weatherData);
+
+  overlayOff();
+  hideSpinner();
 
   if (weatherData.status === 404) {
     weatherDisp1.classList.add("hidden");
