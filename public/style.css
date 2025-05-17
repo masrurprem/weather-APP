@@ -154,24 +154,6 @@
 }
 
 /* Below codes are for overlay and loading spinner*/
-/* .spinner {
-  width: 90px;
-  height: 90px;
-  border: 14px solid rgba(0, 0, 0, 0.1);
-  border-radius: 50%;
-  border-top-color: #09f;
-  border-bottom-color: brown;
-  border-right-color: rgb(159, 92, 45);
-  border-left-color: rgb(12, 128, 128);
-
-  animation: spin 1s ease-in-out infinite;
-} */
-
-/* @keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-} */
 
 .spinner {
   width: 48px;

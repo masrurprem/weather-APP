@@ -20,6 +20,7 @@ const locationNotfound = document.querySelector(".location--error");
 const overlay = document.querySelector(".overlay");
 const spinner = document.querySelector(".spinner");
 const landing = document.querySelector(".landing--txt");
+const busyTxt = document.querySelector(".busy--txt");
 
 // overlay handlers
 function overlayOn() {
