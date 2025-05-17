@@ -89,7 +89,7 @@ submitForm.addEventListener("submit", async (e) => {
   }
 });
 
-////////////
+// Current Location Weather Update Handlers
 const apiKey = "pk.2b24b7388f4b618a770103f06de68764";
 
 async function fetchCity(coords) {
@@ -102,14 +102,13 @@ async function fetchCity(coords) {
 
 navigator.geolocation.getCurrentPosition(async (position) => {
   const location = await fetchCity(position.coords);
-  console.log("the city on the console: ", location);
+
   showSpinner();
   overlayOn();
 
   const response = await fetch(
     `http://localhost:3000/weather?city=${location}`
   );
-  //console.log("the response obj to client: ", response);
 
   const weatherData = await response.json();
   console.log("the response obj to client: ", weatherData.city);
