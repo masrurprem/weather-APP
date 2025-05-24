@@ -90,3 +90,57 @@ submitForm.addEventListener("submit", async (e) => {
     }
   }
 });
+
+////////////
+const apiKey = "pk.2b24b7388f4b618a770103f06de68764";
+
+async function fetchCity(coords) {
+  const response = await fetch(
+    `https://us1.locationiq.com/v1/reverse?key=${apiKey}&lat=${coords.latitude}&lon=${coords.longitude}&format=json`
+  );
+  const data = await response.json();
+  return data.address.city;
+}
+
+navigator.geolocation.getCurrentPosition(async (position) => {
+  const location = await fetchCity(position.coords);
+  console.log("the city on the console: ", location);
+  showSpinner();
+  overlayOn();
+
+  const response = await fetch(
+    `http://localhost:3000/weather?city=${location}`
+  );
+  //console.log("the response obj to client: ", response);
+
+  const weatherData = await response.json();
+  console.log("the response obj to client: ", weatherData.city);
+  overlayOff();
+  hideSpinner();
+  landing.classList.add("hidden");
+  locationNotfound.classList.add("hidden");
+  weatherDisp1.classList.remove("hidden");
+  weatherDisp2.classList.remove("hidden");
+
+  //
+  temp.textContent = `${Math.round(weatherData.temp)}°C`;
+  city.textContent = `${weatherData.city}`;
+  hum.textContent = `${weatherData.humidity}%`;
+  wind.textContent = `${weatherData.windSpeed} Km/h`;
+
+  //
+  // Update weather icon
+  const weather = weatherData.weathIcon;
+
+  if (weather === "Clear") {
+    weatherIcon.src = "/images/sun.png";
+  } else if (weather === "Clouds") {
+    weatherIcon.src = "/images/cloud.png";
+  } else if (weather === "Rain") {
+    weatherIcon.src = "/images/rain.png";
+  } else if (weather === "Drizzle") {
+    weatherIcon.src = "/images/drizzle.png";
+  } else if (weather === "Thunderstorm") {
+    weatherIcon.src = "/images/thunderStorm.png";
+  }
+});
