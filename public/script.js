@@ -48,7 +48,7 @@ submitForm.addEventListener("submit", async (e) => {
   console.log(requested_city);
 
   const response = await fetch(
-    `http://localhost:3000/weather?city=${requested_city}`
+    `https://weather-app-xnyp.onrender.com/weather?city=${requested_city}`
   );
 
   const weatherData = await response.json();
@@ -108,7 +108,7 @@ navigator.geolocation.getCurrentPosition(async (position) => {
   overlayOn();
 
   const response = await fetch(
-    `http://localhost:3000/weather?city=${location}`
+    `https://weather-app-xnyp.onrender.com/weather?city=${location}`
   );
 
   const weatherData = await response.json();
